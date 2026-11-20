@@ -1,6 +1,6 @@
 # Yuanzhang Zheng — personal site
 
-A fast, hand-built static personal site and research portfolio for **Yuanzhang Zheng**, a computational structural biologist working on protein design, antibody engineering, and AI for drug discovery.
+A fast, hand-built static personal site and research portfolio for **Yuanzhang Zheng**, a computational structural biologist and Associate Director of Operations at Synbio Technologies, working across protein design, scientific operations, and AI for drug discovery.
 
 Live site: **https://zyz314.github.io/Yuanzhang-Zheng/**
 
@@ -40,7 +40,8 @@ GitHub Pages is configured to deploy from the **`master` branch, repository root
 
 ## Content sources
 
-- Profile, education, and roles: [ORCID 0000-0002-2519-5321](https://orcid.org/0000-0002-2519-5321)
+- Profile and current role: [LinkedIn](https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab/)
+- Education and publication history: [ORCID 0000-0002-2519-5321](https://orcid.org/0000-0002-2519-5321)
 - Publication metrics and citation counts: [Google Scholar](https://scholar.google.com/citations?user=YLsxMNQAAAAJ&hl=en), sampled November 2026
 - Antibody project data and figures: [Antibody-Design-Zolbetuximab](https://github.com/zyz314/Antibody-Design-Zolbetuximab)
 

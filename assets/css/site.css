@@ -700,14 +700,14 @@ p {
 .hero-facts {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(20px, 3.2vw, 40px);
+  gap: clamp(18px, 2.4vw, 30px);
   margin-top: 44px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
 }
 
 .hero-facts div {
-  min-width: 118px;
+  min-width: 100px;
 }
 
 .hero-facts dt {
