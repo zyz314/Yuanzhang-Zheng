@@ -1,13 +1,13 @@
-# Ignore the contents of the _site directory and other cache directories
+# Local preview and tooling
 _site/
 .sass-cache/
-
-# Ignore the directory for local files during development
 local/
-
-# Ignore the Gemfile that is generated
+node_modules/
+package-lock.json
 Gemfile.lock
 
-# Ingore files created by npm
-node_modules
-package-lock.json
+# OS/editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

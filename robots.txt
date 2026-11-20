@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zyz314.github.io/Yuanzhang-Zheng/sitemap.xml

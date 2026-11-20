@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antigen-Guided Antibody Design — Yuanzhang Zheng</title>
+  <meta name="description" content="A computational antibody design case study: 20 RFdiffusion backbones, 80 heavy/light-chain candidates, RF2 structure prediction, interface scoring, and candidate ranking.">
+  <meta name="theme-color" content="#f4f1e9">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/work/antibody-design/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Antigen-Guided Antibody Design — Yuanzhang Zheng">
+  <meta property="og:description" content="From 20 backbones to 80 ranked antibody candidates: a computational design case study with stated limits.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/work/antibody-design/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/manrope-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/fraunces-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home">
+      <span class="brand-mark" aria-hidden="true">YZ</span>
+      <span class="brand-name">Yuanzhang Zheng</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../#about">About</a>
+      <a href="../" aria-current="page">Work</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="nav-cta" href="mailto:zhengyzh09@gmail.com">
+      Get in touch
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../#about">About</a>
+        <a href="../">Selected work</a>
+        <a href="../../#publications">Publications</a>
+        <a href="../../cv.html">Curriculum vitae</a>
+        <a href="mailto:zhengyzh09@gmail.com">Contact</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="case-hero">
+        <div class="breadcrumbs" data-reveal>
+          <a href="../../">Home</a><span>/</span><a href="../">Work</a><span>/</span><span>Antibody design</span>
+        </div>
+        <p class="eyebrow" style="margin-top: 24px;" data-reveal data-delay="1">
+          <span class="status-dot" aria-hidden="true"></span>
+          Case study · Computational antibody design
+        </p>
+        <h1 class="case-title" data-reveal data-delay="1">A better antibody, one interface <em>at a time.</em></h1>
+        <p class="case-standfirst" data-reveal data-delay="2">
+          An antigen-guided design campaign that turns 20 RFdiffusion backbones into 80 ranked heavy/light-chain candidates — and makes the next experiment obvious.
+        </p>
+        <dl class="case-meta" data-reveal data-delay="2">
+          <div><dt>Role</dt><dd>Computational design &amp; analysis</dd></div>
+          <div><dt>Stack</dt><dd>RFdiffusion, ProteinMPNN, RF2, Python</dd></div>
+          <div><dt>Output</dt><dd>80 candidates / 160 chains</dd></div>
+          <div><dt>Year</dt><dd>2026</dd></div>
+        </dl>
+      </header>
+
+      <figure class="case-cover" data-reveal>
+        <div class="case-cover-frame">
+          <img src="../../assets/images/work/antibody-workflow.webp" alt="Six-stage workflow: input context, RFdiffusion backbone design, ProteinMPNN sequence design, RF2 structure screening, interface scoring, and candidate ranking." width="1800" height="900" decoding="async" fetchpriority="high">
+        </div>
+        <figcaption>
+          <span>Design → sequence → structure → interface score → ranking.</span>
+          <span>Figure from the project report.</span>
+        </figcaption>
+      </figure>
+
+      <div class="case-layout">
+        <div class="case-body">
+          <h2 id="brief">The brief</h2>
+          <p>
+            The goal was not to generate the most antibodies. It was to build a repeatable way to move from an antigen context to a small, inspectable set of designs — then to be explicit about which candidates deserve bench time.
+          </p>
+          <p>
+            The campaign starts with 20 backbone designs, generates 80 heavy/light-chain sequence candidates, predicts each structure with RF2, and scores the resulting interfaces. The output is a ranked table, a set of PDB models, and a short list for experimental follow-up.
+          </p>
+
+          <div class="case-callout">
+            <p>“A design pipeline is only useful if it ends with a decision someone can defend.”</p>
+          </div>
+
+          <h2 id="approach">How the campaign worked</h2>
+          <h3>01 · Define the input context</h3>
+          <p>
+            The run began with an antigen/reference context and a design objective. The input names and reference labels come from the project's test case; they are preserved in the public artifacts rather than cleaned up after the fact.
+          </p>
+          <h3>02 · Generate backbones</h3>
+          <p>
+            RFdiffusion produced 20 backbone designs from the structural design stage. These define the geometry that the sequence-design step has to satisfy.
+          </p>
+          <h3>03 · Design sequences</h3>
+          <p>
+            ProteinMPNN generated heavy- and light-chain sequences for each backbone, yielding 80 final candidates and 160 chain records. Sequence diversity was tracked rather than collapsed into a single consensus.
+          </p>
+          <h3>04 · Predict, score, rank</h3>
+          <p>
+            RF2 predicted 80 final PDB models. For each model, I counted hydrophobic contacts, hydrogen bonds, salt bridges, and interface residues, then combined those signals into a composite score and a small number of tiers.
+          </p>
+
+          <h2 id="results">What came out</h2>
+          <dl class="metric-grid">
+            <div><dt>Final candidates</dt><dd>80<small>20 backbones × 4 sequence designs</small></dd></div>
+            <div><dt>Heavy + light chains</dt><dd>160<small>Two chain records per candidate</small></dd></div>
+            <div><dt>Top composite score</dt><dd>15,360.5<small>Arbitrary units; not a measured Kd</small></dd></div>
+            <div><dt>Top interface residues</dt><dd>71<small>Residues at the designed interface</small></dd></div>
+            <div><dt>Top hydrophobic contacts</dt><dd>7,424<small>Lead candidate</small></dd></div>
+            <div><dt>Tier 1 candidates</dt><dd>5<small>Prioritized for closer inspection</small></dd></div>
+          </dl>
+
+          <p>
+            The top candidate, <code>samples_design_4_dldesign_3_best</code>, has a composite interface score of 15,360.5, with 7,424 hydrophobic contacts, 146 hydrogen bonds, 258 salt bridges, and 71 interface residues. The next candidate scores 8,746.5 — a pronounced lead, but one that needs structural inspection before it means anything.
+          </p>
+
+          <div class="score-list" role="group" aria-label="Top five candidates by composite interface score">
+            <div class="score-row">
+              <span class="score-label">#1 · D4.3</span>
+              <span class="score-track"><span class="score-fill" style="--w: 100%"></span></span>
+              <span class="score-value">15,360.5</span>
+            </div>
+            <div class="score-row">
+              <span class="score-label">#2 · D14.2</span>
+              <span class="score-track"><span class="score-fill" style="--w: 56.9%"></span></span>
+              <span class="score-value">8,746.5</span>
+            </div>
+            <div class="score-row">
+              <span class="score-label">#3 · D10.1</span>
+              <span class="score-track"><span class="score-fill" style="--w: 56.2%"></span></span>
+              <span class="score-value">8,632.0</span>
+            </div>
+            <div class="score-row">
+              <span class="score-label">#4 · D13.2</span>
+              <span class="score-track"><span class="score-fill" style="--w: 47.6%"></span></span>
+              <span class="score-value">7,318.5</span>
+            </div>
+            <div class="score-row">
+              <span class="score-label">#5 · D17.0</span>
+              <span class="score-track"><span class="score-fill" style="--w: 43.5%"></span></span>
+              <span class="score-value">6,675.0</span>
+            </div>
+          </div>
+
+          <figure class="case-figure">
+            <img src="../../assets/images/work/affinity-novelty.webp" alt="Bubble chart of composite interface score versus heavy-chain similarity to the reference antibody; the top design has high score and about 50 percent similarity." width="1600" height="1046" loading="lazy" decoding="async">
+            <figcaption>Composite score vs. heavy-chain similarity to the reference antibody. The lead candidate sits far above the rest of the batch at roughly 50% VH similarity.</figcaption>
+          </figure>
+
+          <p>
+            The distribution matters as much as the top hit. The median composite score is 1,103.5 and the mean is 1,987.6, so the batch has a long tail: five Tier 1 designs, ten Tier 2, fifteen Tier 3, and fifty below the prioritization cutoff. That shape is useful for triage; it is not evidence that any one design binds.
+          </p>
+
+          <h2 id="limits">What the ranking can — and cannot — tell you</h2>
+          <p>
+            The composite score is a heuristic. It rewards interface contacts, so a larger or more hydrophobic interface can score well without being a good antibody. It does not measure affinity, expression, stability, aggregation, immunogenicity, or manufacturability.
+          </p>
+          <p>
+            The structural models are predictions. There is no experimental validation in this project: no expression, no binding assay, no cell-based activity, and no safety assessment. The correct reading is “these are the models and candidates I would inspect first,” not “this antibody works.”
+          </p>
+
+          <h2 id="next">What I would do next</h2>
+          <ol>
+            <li>Visually inspect the top 5–10 PDB models for interface geometry, CDR orientation, and obvious clashes.</li>
+            <li>Check sequence liabilities and developability flags before committing to synthesis.</li>
+            <li>Select 3–5 non-redundant candidates, plus the parental/reference control, for expression.</li>
+            <li>Measure binding with SPR, BLI, or ELISA; use negative controls and run replicates.</li>
+            <li>Only then decide whether to optimize affinity, stability, or both.</li>
+          </ol>
+
+          <div class="disclosure">
+            <strong>Scope and disclosure.</strong> This is a computational methods case study, not a therapeutic candidate or clinical claim. The project's run labels combine more than one antibody name and use a separate reference for sequence similarity; I therefore treat it as a methods exercise rather than a target-specific discovery claim. Target labels, sequences, and figures should be reviewed for disclosure before any commercial or clinical use.
+          </div>
+        </div>
+
+        <aside class="case-aside">
+          <div class="case-aside-card">
+            <h3>At a glance</h3>
+            <p><strong>Output:</strong> 80 candidates, 160 heavy/light-chain records, 80 predicted PDB models.</p>
+            <p style="margin-top: 9px;"><strong>Lead:</strong> <code>samples_design_4_dldesign_3_best</code>, composite score 15,360.5.</p>
+            <p style="margin-top: 9px;"><strong>Status:</strong> Computational only. No wet-lab validation.</p>
+          </div>
+
+          <div class="case-aside-card">
+            <h3>Methods</h3>
+            <ul class="tag-list">
+              <li class="tag">RFdiffusion</li>
+              <li class="tag">ProteinMPNN</li>
+              <li class="tag">RF2</li>
+              <li class="tag">Interface scoring</li>
+              <li class="tag">Python</li>
+              <li class="tag">PyMOL</li>
+            </ul>
+          </div>
+
+          <div class="case-aside-card">
+            <h3>Artifacts</h3>
+            <div class="aside-links">
+              <a href="https://github.com/zyz314/Antibody-Design-Zolbetuximab" target="_blank" rel="noopener noreferrer">Code &amp; data <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="https://github.com/zyz314/Antibody-Design-Zolbetuximab/blob/main/assets/report/Zolbetuximab_tarlatamab_antibody_design_report_EN.docx" target="_blank" rel="noopener noreferrer">Full report <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="https://github.com/zyz314/Antibody-Design-Zolbetuximab/blob/main/data/final_ranking.csv" target="_blank" rel="noopener noreferrer">Ranking CSV <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="https://github.com/zyz314/Antibody-Design-Zolbetuximab/tree/main/structures/top_candidates" target="_blank" rel="noopener noreferrer">Top PDB models <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+
+          <div class="case-aside-card">
+            <h3>Reference similarity</h3>
+            <p>VH median 51.7% · VL median 57.0% against the reference antibody used in the project ranking.</p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="case-next">
+        <a href="../">
+          <div>
+            <span>Back to the portfolio</span>
+            <strong>See all selected work.</strong>
+          </div>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng · New York</span>
+      <span>Built as a static site · <a href="https://github.com/zyz314/Yuanzhang-Zheng" target="_blank" rel="noopener noreferrer">View source</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

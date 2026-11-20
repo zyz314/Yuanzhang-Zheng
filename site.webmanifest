@@ -1,0 +1,17 @@
+{
+  "name": "Yuanzhang Zheng — Computational Structural Biologist",
+  "short_name": "Y. Zheng",
+  "description": "Protein design, antibody engineering, and AI for drug discovery.",
+  "start_url": "/Yuanzhang-Zheng/",
+  "display": "standalone",
+  "background_color": "#f4f1e9",
+  "theme_color": "#0f1c24",
+  "icons": [
+    {
+      "src": "/Yuanzhang-Zheng/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
