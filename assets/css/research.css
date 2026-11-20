@@ -308,6 +308,10 @@
   line-height: 0.96;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .project-standfirst {
   max-width: 62ch;
   margin-top: 24px;
@@ -495,6 +499,15 @@
   color: var(--muted);
   font-size: 8px;
   line-height: 1.55;
+}
+
+.research-figure--wide {
+  grid-column: 1 / -1;
+}
+
+.research-figure--wide img {
+  height: auto;
+  max-height: 620px;
 }
 
 .collab-grid {

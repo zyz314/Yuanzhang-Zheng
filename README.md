@@ -12,7 +12,7 @@ Live site: **https://zyz314.github.io/Yuanzhang-Zheng/**
 | `publications.html` | Full 28-work publication record with search and citation sorting |
 | `work/index.html` | Portfolio index, including software side projects |
 | `work/antibody-design/index.html` | Detailed antigen-guided antibody design case study |
-| `research/index.html` | Research archive with 12 project pages and 14 collaborator portraits |
+| `research/index.html` | Research archive with 13 project pages and 14 collaborator portraits |
 | `research/<slug>/index.html` | Individual project pages with figures, data, and collaborators |
 | `cv.html` | Web CV with print styling |
 | `assets/files/Yuanzhang-Zheng-CV.pdf` | Downloadable two-page PDF CV |
@@ -49,6 +49,7 @@ GitHub Pages is configured to deploy from the **`master` branch, repository root
 - Publication metrics and citation counts: [Google Scholar](https://scholar.google.com/citations?user=YLsxMNQAAAAJ&hl=en), sampled November 2026
 - Antibody project data and figures: [Antibody-Design-Zolbetuximab](https://github.com/zyz314/Antibody-Design-Zolbetuximab)
 - Research project text, figures, and collaborator portraits: Dr. Zheng's April 2024 research summary presentation, supplied by the site owner.
+- Synbio AIDD project text and figures: Dr. Zheng's Synbio AI Gene / AIDD presentation, supplied by the site owner.
 
 ## Notes
 
