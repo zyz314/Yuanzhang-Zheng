@@ -9,9 +9,11 @@ Live site: **https://zyz314.github.io/Yuanzhang-Zheng/**
 | Path | Purpose |
 | --- | --- |
 | `index.html` | Home: about, selected work, publications, experience, contact |
+| `publications.html` | Full 28-work publication record with search and citation sorting |
 | `work/index.html` | Portfolio index, including software side projects |
 | `work/antibody-design/index.html` | Detailed antigen-guided antibody design case study |
-| `cv.html` | Web CV with print / save-as-PDF styling |
+| `cv.html` | Web CV with print styling |
+| `assets/files/Yuanzhang-Zheng-CV.pdf` | Downloadable two-page PDF CV |
 | `404.html` | GitHub Pages 404 page |
 | `assets/` | Self-hosted fonts, CSS, JS, and optimized images |
 | `.nojekyll` | Tells GitHub Pages to serve the static files without Jekyll processing |

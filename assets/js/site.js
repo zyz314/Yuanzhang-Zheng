@@ -87,8 +87,53 @@
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
-  // Current year in the footer
-  doc.querySelectorAll("[data-year]").forEach((node) => {
+  // Publications: search, sort, and result count
+  const pubList = doc.querySelector("[data-pub-list]");
+  if (pubList) {
+    const rows = [...pubList.querySelectorAll(".pub-row")];
+    const search = doc.querySelector("[data-pub-search]");
+    const count = doc.querySelector("[data-pub-count]");
+    const empty = doc.querySelector("[data-pub-empty]");
+    const sortButtons = [...doc.querySelectorAll("[data-pub-sort]")];
+    let sortMode = "newest";
+
+    const applyPublicationFilters = () => {
+      const query = (search?.value || "").trim().toLowerCase();
+      let visible = 0;
+
+      rows.forEach((row) => {
+        const matches = !query || (row.dataset.search || "").includes(query);
+        row.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      const ordered = [...rows].sort((a, b) => {
+        const yearDiff = Number(b.dataset.year) - Number(a.dataset.year);
+        const citeDiff = Number(b.dataset.cites) - Number(a.dataset.cites);
+        return sortMode === "cited" ? citeDiff || yearDiff : yearDiff || citeDiff;
+      });
+      ordered.forEach((row) => pubList.appendChild(row));
+
+      if (count) count.textContent = `${visible} of ${rows.length} works`;
+      if (empty) empty.hidden = visible !== 0;
+    };
+
+    sortButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        sortMode = button.dataset.pubSort || "newest";
+        sortButtons.forEach((item) => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+        applyPublicationFilters();
+      });
+    });
+
+    search?.addEventListener("input", applyPublicationFilters);
+    applyPublicationFilters();
+  }
+
+  // Current year in the footer (scoped so publication data attributes are safe)
+  doc.querySelectorAll(".site-footer [data-year]").forEach((node) => {
     node.textContent = String(new Date().getFullYear());
   });
 })();
