@@ -44,7 +44,7 @@ Then open <http://127.0.0.1:8000/>.
 
 ## Editing
 
-- **Text:** edit the relevant HTML page directly. The 27 model pages were generated from the AIDD model catalogue and the content in `_aidd/content.py`; that working directory is intentionally not part of the published site.
+- **Text:** edit the relevant HTML page directly. The 27 AIDD pages are static; update each page's "My test" section as results arrive.
 - **Styles:** `assets/css/site.css` for the main site; `assets/css/aidd.css` for the AIDD catalogue and model briefs.
 - **Interactions:** `assets/js/site.js` handles the mobile menu, footer year, and minor progressive enhancements.
 - **Images:** `assets/images/research/` for project pages and collaborator portraits; `assets/images/work/` for the antibody case study.
