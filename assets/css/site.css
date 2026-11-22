@@ -45,15 +45,15 @@
 }
 
 :root {
-  --paper: #f5f2ea;
-  --paper-deep: #ebe5d9;
-  --cream: #fbf8f1;
-  --ink: #171715;
-  --ink-soft: #34322e;
-  --muted: #666157;
-  --faint: #8b8579;
-  --rule: #d8d1c4;
-  --rule-strong: #bdb4a5;
+  --paper: #ffffff;
+  --paper-deep: #f2f2ef;
+  --cream: #ffffff;
+  --ink: #151515;
+  --ink-soft: #30302e;
+  --muted: #61635f;
+  --faint: #898a85;
+  --rule: #e3e2de;
+  --rule-strong: #c8c6bf;
   --accent: #8b2f25;
   --dark: #171d1b;
   --serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -340,7 +340,7 @@ p {
 
 .site-header.is-on-dark {
   background: rgba(23, 29, 27, 0.97);
-  border-color: rgba(245, 242, 234, 0.18);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .site-header.is-on-dark .brand,
@@ -407,6 +407,12 @@ p {
 .home-meta {
   margin-top: 46px;
   color: var(--muted);
+  font-size: 14px;
+}
+
+.home-availability {
+  margin-top: 8px;
+  color: var(--accent);
   font-size: 14px;
 }
 

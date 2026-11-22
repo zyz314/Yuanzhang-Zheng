@@ -6,7 +6,7 @@ Live site: **https://zyz314.github.io/Yuanzhang-Zheng/**
 
 ## Positioning
 
-The site is intentionally editorial rather than product-like: a warm paper background, large Source Serif headlines, IBM Plex Sans body text, generous whitespace, thin rules, and real research figures. There are no card grids, pill buttons, floating chips, decorative gradients, or stock science imagery.
+The site is intentionally editorial rather than product-like: a clean white background, large Source Serif headlines, IBM Plex Sans body text, generous whitespace, thin rules, and real research figures. There are no card grids, pill buttons, floating chips, decorative gradients, or stock science imagery.
 
 - **Home** — AIDD positioning, four selected AIDD projects, capabilities, the 27-model testing program, publications, experience, education, and contact.
 - **AIDD Model Testing** — 27 technical briefs for open-source AIDD models and tools, with a standard structure: what it does, the AI principle, where it breaks, how to improve it, and an open test log.

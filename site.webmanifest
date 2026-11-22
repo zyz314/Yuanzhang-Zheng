@@ -4,8 +4,8 @@
   "description": "AIDD, AI drug discovery, protein and antibody design, and model evaluation.",
   "start_url": "/Yuanzhang-Zheng/",
   "display": "standalone",
-  "background_color": "#f5f2ea",
-  "theme_color": "#171715",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/Yuanzhang-Zheng/favicon.svg",
