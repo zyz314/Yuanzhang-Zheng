@@ -5,28 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found — Yuanzhang Zheng</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#f4f1e9">
+  <meta name="theme-color" content="#f5f2ea">
   <link rel="icon" href="/Yuanzhang-Zheng/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/Yuanzhang-Zheng/assets/css/site.css">
   <script>document.documentElement.classList.replace("no-js", "js");</script>
 </head>
 <body>
-  <header class="site-header is-scrolled">
-    <a class="brand" href="/Yuanzhang-Zheng/" aria-label="Yuanzhang Zheng, home">
-      <span class="brand-mark" aria-hidden="true">YZ</span>
-      <span class="brand-name">Yuanzhang Zheng</span>
-    </a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/Yuanzhang-Zheng/" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng</span></a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/Yuanzhang-Zheng/#about">About</a>
-      <a href="/Yuanzhang-Zheng/work/">Work</a>
       <a href="/Yuanzhang-Zheng/research/">Research</a>
       <a href="/Yuanzhang-Zheng/publications.html">Publications</a>
       <a href="/Yuanzhang-Zheng/cv.html">CV</a>
     </nav>
-    <a class="nav-cta" href="mailto:zhengyzh09@gmail.com">Get in touch</a>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="/Yuanzhang-Zheng/research/">Research</a>
+        <a href="/Yuanzhang-Zheng/publications.html">Publications</a>
+        <a href="/Yuanzhang-Zheng/cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
   </header>
 
-  <main class="not-found">
+  <main class="not-found" id="main">
     <p class="not-found-code">404</p>
     <h1>This structure didn't fold.</h1>
     <p>The page you're looking for is missing, moved, or was never built. The good news: the rest of the site is still here.</p>
@@ -37,8 +41,8 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2026 Yuanzhang Zheng · New York</span>
-      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">View source</a></span>
+      <span>© <span data-year>2026</span> Yuanzhang Zheng · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
     </div>
   </footer>
 </body>

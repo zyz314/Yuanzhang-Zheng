@@ -1,21 +1,30 @@
 # Yuanzhang Zheng — personal site
 
-A fast, hand-built static personal site and research portfolio for **Yuanzhang Zheng**, a computational structural biologist and Associate Director of Operations at Synbio Technologies, working across protein design, scientific operations, and AI for drug discovery.
+A fast, hand-built static personal site and research portfolio for **Yuanzhang Zheng**, a computational structural biologist and Associate Director of Operations at Synbio Technologies.
 
 Live site: **https://zyz314.github.io/Yuanzhang-Zheng/**
+
+## Design
+
+The site is intentionally editorial rather than product-like: a warm paper background, large Source Serif headlines, IBM Plex Sans body text, generous whitespace, thin rules, and real research figures. There are no card grids, pill buttons, floating chips, decorative gradients, or stock science imagery.
+
+- **Home** — a short introduction, four selected research stories, a 13-project index, selected publications, experience, and contact.
+- **Research** — three featured stories, a complete project index grouped by career stage, and 14 collaborator portraits.
+- **Project pages** — long-form research narratives with figures, metrics, collaborators, outputs, and a disclosure note where needed.
+- **Publications** — the full 28-work record without filters or dashboard chrome.
+- **CV** — a web CV with a print stylesheet and a downloadable PDF.
 
 ## What is here
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | Home: about, selected work, publications, experience, contact |
-| `publications.html` | Full 28-work publication record with search and citation sorting |
-| `work/index.html` | Portfolio index, including software side projects |
-| `work/antibody-design/index.html` | Detailed antigen-guided antibody design case study |
+| `index.html` | Home: about, selected research, research index, publications, experience, contact |
 | `research/index.html` | Research archive with 13 project pages and 14 collaborator portraits |
 | `research/<slug>/index.html` | Individual project pages with figures, data, and collaborators |
+| `publications.html` | Full 28-work publication record |
 | `cv.html` | Web CV with print styling |
-| `assets/files/Yuanzhang-Zheng-CV.pdf` | Downloadable two-page PDF CV |
+| `assets/files/Yuanzhang-Zheng-CV.pdf` | Downloadable PDF CV |
+| `work/antibody-design/index.html` | Detailed antigen-guided antibody design case study |
 | `404.html` | GitHub Pages 404 page |
 | `assets/` | Self-hosted fonts, CSS, JS, and optimized images |
 | `.nojekyll` | Tells GitHub Pages to serve the static files without Jekyll processing |
@@ -33,10 +42,10 @@ Then open <http://127.0.0.1:8000/>.
 ## Editing
 
 - **Text:** edit the relevant HTML page directly.
-- **Styles:** `assets/css/site.css` for the main site and `assets/css/research.css` for the research archive.
-- **Interactions:** `assets/js/site.js` (sticky header, scroll reveals, mobile menu, publication filters).
-- **Images:** `assets/images/work/` for the antibody case study; `assets/images/research/` for the project pages and 14 collaborator portraits.
-- **CV:** edit `cv.html`. The two-page PDF is `assets/files/Yuanzhang-Zheng-CV.pdf`; regenerate it from the page after content changes. `@media print` styles are included.
+- **Styles:** `assets/css/site.css` is the single stylesheet for the whole site.
+- **Interactions:** `assets/js/site.js` handles the mobile menu, footer year, and minor progressive enhancements.
+- **Images:** `assets/images/research/` for project pages and collaborator portraits; `assets/images/work/` for the antibody case study.
+- **CV:** edit `cv.html`, then regenerate `assets/files/Yuanzhang-Zheng-CV.pdf` from the print view. The current PDF is three pages.
 
 ## Deployment
 
@@ -54,9 +63,9 @@ GitHub Pages is configured to deploy from the **`master` branch, repository root
 ## Notes
 
 - The antibody design project is a computational methods case study. It has **no experimental validation** and is not a therapeutic or clinical claim.
-- Citation metrics change over time; update them on the home page and CV when needed.
+- Citation metrics change over time; update them on the home page, publications page, and CV when needed.
 - Some research pages summarize unpublished or client-related work (Curia, CHDI, Moderna, and the GCase program). Confirm disclosure permissions before reusing those figures or details.
-- The site is intentionally dependency-free — no Jekyll, Node build, or external JS libraries.
+- The site is dependency-free — no Jekyll, Node build, or external JavaScript libraries.
 
 ---
 
