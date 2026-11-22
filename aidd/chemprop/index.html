@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chemprop — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="The standard directed message-passing neural network for molecular property and ADMET prediction.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/chemprop/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Chemprop — AIDD Model Testing">
+  <meta property="og:description" content="The standard directed message-passing neural network for molecular property and ADMET prediction.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/chemprop/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>Chemprop</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · ADMET / property prediction</p>
+      <h1 class="model-title">Chemprop</h1>
+      <p class="model-standfirst">The standard directed message-passing neural network for molecular property and ADMET prediction.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2023</dd></div>
+        <div><dt>Difficulty</dt><dd>Beginner</dd></div>
+        <div><dt>Compute</dt><dd>CPU or GPU</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Check v2 docs; straightforward benchmark</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>Chemprop predicts molecular properties from a 2D graph. It is widely used for ADMET, toxicity, solubility, and other endpoints.</p><p>It is a supervised model: it needs labeled data for the endpoint you care about. It is not a generative model.</p>
+
+        <h2>The AI principle</h2>
+        <p>Chemprop uses a directed message-passing neural network (D-MPNN). Messages flow along directed bonds, so the model can learn local chemical environments without hand-coded fingerprints.</p><p>A readout layer aggregates atom/bond representations into a molecule-level prediction. Modern Chemprop supports multi-task training, uncertainty estimates, and descriptor augmentation.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It is a strong, fast baseline for molecular property prediction.</li><li>The directed message-passing design is chemically sensible and data-efficient.</li><li>It has good tooling for uncertainty and multi-task endpoints.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>It is 2D and does not see the binding pocket or 3D conformation.</li><li>Performance drops on rare scaffolds and small datasets.</li><li>Uncertainty estimates need calibration and can be overconfident.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Add 3D conformer or pocket context for mechanism-aware endpoints.</li><li>Calibrate uncertainty on scaffold splits and report applicability domain.</li><li>Use multi-task learning with biologically related endpoints.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Run MoleculeNet ESOL, FreeSolv, Lipophilicity, and BACE with the official splits. Compare with a random-forest baseline and measure calibration and scaffold generalization.</p>
+          <ul class="model-test-metrics"><li>RMSE</li><li>ROC-AUC</li><li>calibration</li><li>scaffold split</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://github.com/chemprop/chemprop" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Journal / software</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

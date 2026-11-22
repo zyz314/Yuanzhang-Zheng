@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlphaFold3 — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="The reference all-atom co-folding model for biomolecular complexes.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/alphafold3/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AlphaFold3 — AIDD Model Testing">
+  <meta property="og:description" content="The reference all-atom co-folding model for biomolecular complexes.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/alphafold3/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>AlphaFold3</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Structure prediction</p>
+      <h1 class="model-title">AlphaFold3</h1>
+      <p class="model-standfirst">The reference all-atom co-folding model for biomolecular complexes.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Difficulty</dt><dd>Advanced</dd></div>
+        <div><dt>Compute</dt><dd>GPU; high memory</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Public code; weights/access and license restrictions apply</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>AlphaFold3 predicts joint structures of proteins, nucleic acids, ligands, and ions. It is the model most other open co-folding systems are compared against.</p><p>It is a structure predictor. It does not predict affinity, kinetics, or the effect of a mutation on function.</p>
+
+        <h2>The AI principle</h2>
+        <p>AF3 replaces much of the Evoformer with a Pairformer trunk and uses a diffusion module to generate atom coordinates. It operates on atoms rather than residues alone, which is why it can represent ligands and modified residues.</p><p>The model learns from the PDB and related structural data. Its confidence heads (pLDDT, PAE, pTM) are trained to estimate structural accuracy, not biological activity.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It is the strongest general reference for complex structure prediction.</li><li>It handles a wide range of ligands, ions, and nucleic acids.</li><li>It is an excellent oracle for filtering designed complexes, with the usual caveats.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>Weights are non-commercial and access is controlled; it is not an open-source model in the usual sense.</li><li>It is static and does not capture conformational ensembles or binding entropy.</li><li>It can be confidently wrong, especially on novel chemistry and low-homology targets.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Release permissive weights and a reproducible training recipe.</li><li>Add ensemble and affinity/kinetics heads with proper calibration.</li><li>Evaluate on prospective, experimentally measured complexes rather than only PDB re-runs.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Use AF3 as the reference on the same five complexes as Boltz/Chai. Record ligand RMSD, interface confidence, and runtime. If access is unavailable, I will use Boltz-2 as the reference and say so.</p>
+          <ul class="model-test-metrics"><li>ligand RMSD</li><li>pLDDT</li><li>PAE</li><li>runtime</li><li>access constraints</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Nature</span>
+        </a>
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

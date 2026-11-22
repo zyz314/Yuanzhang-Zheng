@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaMGen — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="LLM-based 3D molecular generation for multi-target drug design.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/lamgen/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LaMGen — AIDD Model Testing">
+  <meta property="og:description" content="LLM-based 3D molecular generation for multi-target drug design.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/lamgen/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>LaMGen</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Small molecule / multi-target</p>
+      <h1 class="model-title">LaMGen</h1>
+      <p class="model-standfirst">LLM-based 3D molecular generation for multi-target drug design.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Difficulty</dt><dd>Advanced</dd></div>
+        <div><dt>Compute</dt><dd>GPU</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> GitHub not verified; included for discovery only</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>LaMGen is a 2026 research model for generating 3D molecules against more than one target. It is aimed at polypharmacology and multi-target design, where a single molecule must satisfy several pocket constraints.</p><p>The public record is thinner than for the older open-source models. The paper and a Zenodo checkpoint are available, but I have not yet verified a maintained GitHub repository.</p>
+
+        <h2>The AI principle</h2>
+        <p>The model combines a language-model prior over molecular representations with 3D geometry and multi-target conditioning. The exact architecture should be read from the paper before reproduction; the checkpoint release suggests a sequence/token-based generator rather than a pure equivariant diffusion model.</p><p>The key AI idea is conditional generation under multiple, sometimes conflicting, objectives. The model must learn a joint distribution over molecules that can dock into several pockets, not just optimize one score.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>Multi-target conditioning is a real gap in most open-source molecular generators.</li><li>It produces 3D candidates, so the output can be docked and checked geometrically.</li><li>It is a useful test case for polypharmacology and selectivity trade-offs.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>The code/weights situation is less mature than the rest of this catalogue; reproducibility is a risk.</li><li>Multi-target scores can be gamed by promiscuous or non-drug-like molecules.</li><li>Synthesizability, selectivity, and ADMET are not guaranteed by the generative objective.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Release a pinned inference recipe with the exact checkpoint and target-encoding format.</li><li>Add synthesizability and selectivity constraints to the generation objective, not only docking scores.</li><li>Evaluate on prospective polypharmacology pairs with experimental data.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>If the checkpoint runs, generate 1,000 molecules for two related targets. Dock with Vina or Uni-Dock, compute QED/SA, and inspect whether multi-target scores are achieved by genuine dual binders or promiscuous compounds.</p>
+          <ul class="model-test-metrics"><li>validity</li><li>dual-target rate</li><li>QED</li><li>SA score</li><li>selectivity</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://doi.org/10.1038/s41467-026-71737-w" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Nature Communications</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

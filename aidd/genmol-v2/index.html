@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GenMol V2 — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="The updated GenMol release with extended SAFE syntax and newer checkpoints.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/genmol-v2/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GenMol V2 — AIDD Model Testing">
+  <meta property="og:description" content="The updated GenMol release with extended SAFE syntax and newer checkpoints.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/genmol-v2/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>GenMol V2</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Small molecule / generation</p>
+      <h1 class="model-title">GenMol V2</h1>
+      <p class="model-standfirst">The updated GenMol release with extended SAFE syntax and newer checkpoints.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2025</dd></div>
+        <div><dt>Difficulty</dt><dd>Intermediate</dd></div>
+        <div><dt>Compute</dt><dd>GPU recommended</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> V2 is a repository update, not a separately verified paper</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>GenMol V2 is a repository update to GenMol, not a separately published model with its own paper. It extends the SAFE syntax and ships updated code/checkpoints.</p><p>I keep it as a separate page so the exact version used in a test is recorded. The underlying idea is the same discrete-diffusion generator described on the GenMol page.</p>
+
+        <h2>The AI principle</h2>
+        <p>The core is still masked discrete diffusion over SAFE fragments, with parallel decoding and fragment remasking. V2 changes the representation/syntax and the released checkpoint rather than introducing a new learning paradigm.</p><p>The practical AI question is version stability: a better tokenizer can improve fragment handling, but it also changes the distribution the model was trained on. Reproducing a result requires pinning the checkpoint and syntax version.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>The extended SAFE syntax can represent more complex fragments and attachment patterns.</li><li>Updated checkpoints may improve generation quality without a new pipeline.</li><li>It is a useful reminder that model versions need to be recorded.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>There is no separate peer-reviewed paper for V2; the evidence is the repository and the original GenMol paper.</li><li>Version drift makes comparisons with published GenMol results difficult.</li><li>The same 2D limitations as GenMol apply.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Publish a versioned model card with exact training data, tokenizer, and evaluation.</li><li>Run a controlled V1-vs-V2 comparison on identical prompts and metrics.</li><li>Keep backward-compatible checkpoints so published results can be reproduced.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Run the same 1,000-molecule prompt set through GenMol V1 and V2. Compare validity, novelty, fragment diversity, and docking scores, with the checkpoint hash recorded.</p>
+          <ul class="model-test-metrics"><li>validity</li><li>fragment diversity</li><li>novelty</li><li>docking score</li><li>version reproducibility</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://proceedings.mlr.press/v267/lee25o.html" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Model update; see GenMol paper</span>
+        </a>
+        <a href="https://github.com/NVIDIA-BioNeMo/genmol" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

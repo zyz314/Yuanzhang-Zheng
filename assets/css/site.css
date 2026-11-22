@@ -1854,11 +1854,110 @@ p {
   color: var(--muted);
 }
 
+/* AIDD positioning blocks on the home page */
+
+#aidd {
+  padding-top: 0;
+}
+
+#aidd .aidd-callout {
+  border-top: 0;
+}
+
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+
+.capability h3 {
+  margin-bottom: 8px;
+  font-size: 21px;
+  line-height: 1.15;
+}
+
+.capability p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.aidd-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: end;
+  padding: clamp(28px, 4vw, 42px) 0;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.aidd-callout h2 {
+  max-width: 15ch;
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+.aidd-callout p {
+  max-width: 650px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.aidd-callout .text-link {
+  margin-top: 22px;
+}
+
+.aidd-callout-number {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 16px;
+  text-align: right;
+}
+
+.aidd-callout-number strong {
+  color: var(--accent);
+  font-family: var(--serif);
+  font-size: clamp(5rem, 10vw, 8rem);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 0.78;
+}
+
+.aidd-callout-number span {
+  max-width: 120px;
+  padding-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 /* Responsive */
 
 @media (max-width: 980px) {
   .site-nav {
     gap: 22px;
+  }
+
+  .capabilities {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 32px;
+  }
+
+  .aidd-callout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .aidd-callout-number {
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .header-email {
@@ -1998,6 +2097,23 @@ p {
   .section-head h2,
   .section-title {
     font-size: 2.1rem;
+  }
+
+  .capabilities {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .capability h3 {
+    font-size: 20px;
+  }
+
+  .aidd-callout h2 {
+    font-size: 2.1rem;
+  }
+
+  .aidd-callout-number strong {
+    font-size: 5.5rem;
   }
 
   .feature h3 {
@@ -2210,8 +2326,8 @@ p {
   body {
     background: #fff;
     color: #111;
-    font-size: 9.5pt;
-    line-height: 1.5;
+    font-size: 9.1pt;
+    line-height: 1.45;
   }
 
   .skip-link,
@@ -2244,24 +2360,65 @@ p {
   .cv-section {
     grid-template-columns: 32mm 1fr;
     gap: 6mm;
-    padding: 3.5mm 0;
+    padding: 2.5mm 0;
   }
 
   .cv-top h1 {
-    font-size: 29pt;
+    font-size: 26pt;
+  }
+
+  .cv-top .eyebrow,
+  .cv-contact {
+    font-size: 8pt;
+  }
+
+  .cv-section h2 {
+    font-size: 8.2pt;
+  }
+
+  .cv-role h3 {
+    font-size: 14pt;
+  }
+
+  .cv-role .cv-org,
+  .cv-date {
+    font-size: 8pt;
+  }
+
+  .cv-role p:last-child {
+    margin-top: 1.2mm;
+    font-size: 8.5pt;
+    line-height: 1.5;
+  }
+
+  .cv-section[aria-labelledby="cv-skills"] {
+    break-before: page;
+  }
+
+  .cv-skills {
+    gap: 3mm 8mm;
+  }
+
+  .cv-skills h3 {
+    font-size: 8pt;
+  }
+
+  .cv-skills p {
+    font-size: 8.4pt;
+    line-height: 1.5;
   }
 
   .cv-role {
     grid-template-columns: 1fr 30mm;
-    padding-bottom: 3mm;
-    margin-bottom: 3mm;
+    padding-bottom: 2.2mm;
+    margin-bottom: 2.2mm;
     break-inside: avoid;
   }
 
   .cv-pubs li {
-    margin-bottom: 2mm;
-    font-size: 8.2pt;
-    line-height: 1.55;
+    margin-bottom: 1.3mm;
+    font-size: 7.8pt;
+    line-height: 1.5;
     break-inside: avoid;
   }
 

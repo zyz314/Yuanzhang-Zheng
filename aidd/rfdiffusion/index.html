@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RFdiffusion — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="The original SE(3) diffusion model for protein backbone design, motif scaffolding, and binder design.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/rfdiffusion/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RFdiffusion — AIDD Model Testing">
+  <meta property="og:description" content="The original SE(3) diffusion model for protein backbone design, motif scaffolding, and binder design.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/rfdiffusion/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>RFdiffusion</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Protein / backbone design</p>
+      <h1 class="model-title">RFdiffusion</h1>
+      <p class="model-standfirst">The original SE(3) diffusion model for protein backbone design, motif scaffolding, and binder design.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2023</dd></div>
+        <div><dt>Difficulty</dt><dd>Intermediate</dd></div>
+        <div><dt>Compute</dt><dd>GPU recommended</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Classic baseline for binder design</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>RFdiffusion generates protein backbones. It can scaffold a motif, design a binder against a target, or generate an unconditional protein. It is the foundation for many later design pipelines, including RFantibody.</p><p>It outputs a backbone, not a sequence. ProteinMPNN or another inverse-folding model is required to assign amino acids.</p>
+
+        <h2>The AI principle</h2>
+        <p>RFdiffusion performs denoising diffusion over rigid protein frames in SE(3). The forward process adds noise to residue frames; the reverse process uses a RoseTTAFold-derived denoiser to predict the clean structure.</p><p>Conditioning is implemented by fixing the target and motif frames during denoising. The model learns to generate the rest of the backbone so that it packs against the fixed context.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It is a proven, widely used baseline for binder and motif design.</li><li>The SE(3) formulation respects rotational and translational symmetry.</li><li>It has a large ecosystem of examples, filters, and downstream tools.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>Backbone-only generation ignores side-chain and ligand chemistry.</li><li>Experimental success rates are modest; in-silico filters are imperfect.</li><li>It requires substantial GPU time for large campaigns.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Move to all-atom conditioning for ligands and catalytic side chains, as RFdiffusion2/3 do.</li><li>Calibrate filters against experimental positives and negatives.</li><li>Report diversity and failure modes, not only top designs.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Run the official motif-scaffolding example and a small binder-design task. Generate 100 backbones, design sequences with ProteinMPNN, and evaluate with AF2. Record runtime, designability, and motif RMSD.</p>
+          <ul class="model-test-metrics"><li>runtime</li><li>motif RMSD</li><li>designability</li><li>diversity</li><li>AF2 confidence</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://doi.org/10.1038/s41586-023-06415-8" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Nature</span>
+        </a>
+        <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

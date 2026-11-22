@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yuanzhang Zheng — Structural Biology, Protein Design, and AI</title>
-  <meta name="description" content="Yuanzhang Zheng is a computational structural biologist and Associate Director of Operations at Synbio Technologies, working across protein design, AIDD, and scientific operations.">
+  <title>Yuanzhang Zheng, PhD — AIDD and AI Drug Discovery</title>
+  <meta name="description" content="Yuanzhang Zheng, PhD is an AIDD leader combining structure-based drug discovery with an M.S. in Computer Science (AI) from Georgia Tech. He builds and evaluates AI systems for protein design, antibody discovery, and molecular generation.">
   <meta name="author" content="Yuanzhang Zheng">
   <meta name="theme-color" content="#f5f2ea">
   <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Yuanzhang Zheng — Structural Biology, Protein Design, and AI">
-  <meta property="og:description" content="Computational structural biologist and Associate Director of Operations at Synbio Technologies.">
+  <meta property="og:title" content="Yuanzhang Zheng, PhD — AIDD and AI Drug Discovery">
+  <meta property="og:description" content="AIDD leader with a structural-biology foundation and an M.S. in Computer Science (AI) from Georgia Tech.">
   <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/">
   <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -24,9 +24,10 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" data-header>
-    <a class="brand" href="" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng</span></a>
+    <a class="brand" href="./" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
     <nav class="site-nav" aria-label="Primary">
       <a href="research/">Research</a>
+      <a href="aidd/">AIDD</a>
       <a href="publications.html">Publications</a>
       <a href="cv.html">CV</a>
     </nav>
@@ -35,6 +36,7 @@
       <summary>Menu</summary>
       <nav class="mobile-nav" aria-label="Mobile">
         <a href="research/">Research</a>
+        <a href="aidd/">AIDD</a>
         <a href="publications.html">Publications</a>
         <a href="cv.html">CV</a>
         <a href="mailto:zhengyzh09@gmail.com">Email</a>
@@ -44,20 +46,21 @@
 
   <main id="main">
     <section class="home-hero">
-      <p class="home-role">Computational structural biologist · New York</p>
+      <p class="home-role">AIDD leader · structure-based drug discovery → AI-native design · New York</p>
       <h1 class="home-name">Yuanzhang Zheng</h1>
       <p class="home-lede">
-        I study how proteins fold, bind, and fail — and build the structural and AI systems that turn that understanding into better medicines.
+        I build AI systems for drug discovery, grounded in more than a decade of structural biology.
       </p>
       <p class="home-body">
-        I have worked across X-ray crystallography, enzymology, protein design, and AI for drug discovery. I currently serve as Associate Director of Operations at Synbio Technologies, where I work across scientific operations, AIDD, and AI-assisted gene synthesis.
+        I have determined protein structures, designed inhibitors, and led scientific operations. I now combine that experimental judgment with an M.S. in Computer Science (AI) from Georgia Tech to build and evaluate AIDD pipelines: generative protein and antibody design, structure prediction, molecular generation, and model testing. I currently serve as Associate Director of Operations at Synbio Technologies, where I work across AIDD and AI-assisted gene synthesis.
       </p>
       <div class="home-links">
+        <a href="aidd/">AIDD model testing</a>
         <a href="research/">Research</a>
         <a href="cv.html">Curriculum vitae</a>
         <a href="mailto:zhengyzh09@gmail.com">Email</a>
       </div>
-      <p class="home-meta">PhD, Biochemistry · Loyola University Chicago · New York, NY</p>
+      <p class="home-meta">PhD, Biochemistry · M.S., Computer Science (AI), Georgia Institute of Technology · New York, NY</p>
     </section>
 
     <figure class="home-figure">
@@ -65,9 +68,47 @@
       <figcaption>X-ray diffraction image from a protein crystal, collected during the structural-biology years at Loyola University Chicago.</figcaption>
     </figure>
 
+    <section class="section" id="capabilities">
+      <div class="section-head">
+        <h2>What I bring to AIDD</h2>
+        <a class="text-link" href="cv.html">Full CV</a>
+      </div>
+      <div class="capabilities">
+        <div class="capability">
+          <h3>AI drug discovery</h3>
+          <p>Model selection, evaluation, and failure analysis across generative chemistry, structure prediction, docking, ADMET, and protein design. I care about reproducibility and prospective tests.</p>
+        </div>
+        <div class="capability">
+          <h3>Protein and antibody design</h3>
+          <p>RFdiffusion, RFantibody, ProteinMPNN, LigandMPNN, RF2, and Boltz-2. Binder and enzyme design with wet-lab-aware filters.</p>
+        </div>
+        <div class="capability">
+          <h3>Structure-based discovery</h3>
+          <p>X-ray crystallography, cryo-EM, enzymology, and more than 40 protein structures. I know what a model has to get right to matter experimentally.</p>
+        </div>
+        <div class="capability">
+          <h3>Scientific operations</h3>
+          <p>Cross-functional leadership, CRO delivery, and reproducible computational workflows that survive contact with real projects.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="aidd">
+      <div class="aidd-callout">
+        <div>
+          <p class="feature-kicker">AIDD model testing</p>
+          <h2>27 models. One public test log.</h2>
+          <p>I am working through the open-source models that matter for AI drug discovery, one by one. Each brief explains the mechanism, where it breaks, and what I would improve. The test logs are reserved for my own runs, including a 2,000-design RFantibody campaign.</p>
+          <a class="text-link" href="aidd/">Open the test log <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="aidd-callout-number"><strong>27</strong><span>open-source model and tool briefs</span></div>
+      </div>
+    </section>
+
     <section class="section" id="research">
       <div class="section-head">
-        <h2>Selected research</h2>
+        <h2>Selected AIDD work</h2>
         <a class="text-link" href="research/">All research <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
 
@@ -75,38 +116,12 @@
         <div class="feature-text">
           <p class="feature-kicker">Synbio Technologies · AIDD</p>
           <h3>From 10 billion bases to AI-designed sequences.</h3>
-          <p>Building the AI layer for gene synthesis, antibody discovery, mRNA, protein expression, and DNA storage — with more than 10 billion bases of real synthesis data behind it.</p>
+          <p>Building the AI layer for gene synthesis, antibody discovery, mRNA, protein expression, and DNA storage, with more than 10 billion bases of real synthesis data behind it.</p>
           <a class="text-link" href="research/synbio-ai/">Read the project <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
         <figure class="feature-media">
           <img src="assets/images/research/synbio-ai/10b-strategy.webp" alt="Synbio's 10 billion bases and the data, digitization, and AI strategy" loading="lazy">
           <figcaption>Synbio's synthesis history is the data foundation for its AIDD strategy.</figcaption>
-        </figure>
-      </article>
-
-      <article class="feature feature--reverse">
-        <figure class="feature-media">
-          <img src="assets/images/research/glgc/ligand-complexes.webp" alt="Composite view of GlgC structures with different ligands" loading="lazy">
-          <figcaption>GlgC structures from the Ballicora collaboration, including nucleotide and sugar-phosphate complexes.</figcaption>
-        </figure>
-        <div class="feature-text">
-          <p class="feature-kicker">Loyola University Chicago · Enzymology</p>
-          <h3>More than 20 structures of a central starch enzyme.</h3>
-          <p>Mapping two AMP sites, activator promiscuity, and the conformational changes that control ADP-glucose pyrophosphorylase.</p>
-          <a class="text-link" href="research/glgc/">Read the project <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </article>
-
-      <article class="feature">
-        <div class="feature-text">
-          <p class="feature-kicker">Indiana University · Postdoctoral research</p>
-          <h3>Making human PINK1 tractable.</h3>
-          <p>Building the expression, purification, cryo-EM, and crystallography pipeline for a Parkinson's disease kinase that had resisted structural work.</p>
-          <a class="text-link" href="research/pink1/">Read the project <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-        <figure class="feature-media">
-          <img src="assets/images/research/pink1/pathway.webp" alt="PINK1 and Parkin pathway in Parkinson's disease" loading="lazy">
-          <figcaption>The PINK1/Parkin pathway: the biological context for the human PINK1 structural work.</figcaption>
         </figure>
       </article>
 
@@ -122,8 +137,33 @@
           <a class="text-link" href="work/antibody-design/">Read the case study <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </article>
-    </section>
 
+      <article class="feature">
+        <div class="feature-text">
+          <p class="feature-kicker">Curia Global · Moderna collaboration</p>
+          <h3>AI antibody design, from data curation to expression.</h3>
+          <p>A cross-functional program spanning antibody data curation, AI design, computational evaluation, and wet-lab expression testing.</p>
+          <a class="text-link" href="research/ai-antibody/">Read the project <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <figure class="feature-media">
+          <img src="assets/images/research/ai-antibody/workflow.webp" alt="AI antibody design workflow from data curation to expression" loading="lazy">
+          <figcaption>An AI antibody program spanning data, design, computational evaluation, and expression.</figcaption>
+        </figure>
+      </article>
+
+      <article class="feature feature--reverse">
+        <figure class="feature-media">
+          <img src="assets/images/research/glgc/ligand-complexes.webp" alt="Composite view of GlgC structures with different ligands" loading="lazy">
+          <figcaption>GlgC structures from the Ballicora collaboration, including nucleotide and sugar-phosphate complexes.</figcaption>
+        </figure>
+        <div class="feature-text">
+          <p class="feature-kicker">Loyola University Chicago · Structural biology foundation</p>
+          <h3>More than 20 structures of a central starch enzyme.</h3>
+          <p>The experimental foundation behind the AIDD work: mapping two AMP sites, activator promiscuity, and the conformational changes that control an enzyme.</p>
+          <a class="text-link" href="research/glgc/">Read the project <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+    </section>
 
     <section class="section" id="publications">
       <div class="section-head">
@@ -168,17 +208,31 @@
         <div class="experience-row">
           <span class="experience-years">2024 — present</span>
           <div><div class="experience-role">Associate Director of Operations</div><div class="experience-place">Synbio Technologies</div></div>
-          <div class="experience-note">Scientific operations and service delivery for a synthetic-biology and antibody-discovery company; joined as Principal Support Scientist.</div>
+          <div class="experience-note">Scientific operations and service delivery for a synthetic-biology and antibody-discovery company; AIDD and AI-assisted gene synthesis.</div>
         </div>
         <div class="experience-row">
           <span class="experience-years">2022 — 2024</span>
           <div><div class="experience-role">Research Scientist III</div><div class="experience-place">Curia Global · New York</div></div>
-          <div class="experience-note">Drug discovery and development, with structural and computational work on Huntingtin, antibody design, and AI-assisted discovery.</div>
+          <div class="experience-note">Structure-based drug discovery, AI-assisted antibody design, and computational evaluation for therapeutic programs.</div>
         </div>
         <div class="experience-row">
           <span class="experience-years">2019 — 2022</span>
           <div><div class="experience-role">Postdoctoral Associate</div><div class="experience-place">Indiana University School of Medicine</div></div>
           <div class="experience-note">Structural and mechanistic studies of PINK1 and LRRK2, two proteins linked to Parkinson's disease.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-head">
+        <h2>Education</h2>
+        <a class="text-link" href="cv.html">Full CV</a>
+      </div>
+      <div class="experience-list">
+        <div class="experience-row">
+          <span class="experience-years">2024 — 2026</span>
+          <div><div class="experience-role">M.S., Computer Science (AI)</div><div class="experience-place">Georgia Institute of Technology</div></div>
+          <div class="experience-note">Machine learning, deep learning, and AI for drug discovery.</div>
         </div>
         <div class="experience-row">
           <span class="experience-years">2012 — 2019</span>
@@ -190,8 +244,8 @@
   </main>
 
   <section class="contact" id="contact">
-    <h2>Let's talk about proteins, data, and the experiments that matter.</h2>
-    <p class="contact-copy">I am always glad to discuss structural biology, protein design, AIDD, or scientific operations.</p>
+    <h2>Let's build the next generation of AIDD.</h2>
+    <p class="contact-copy">I am currently open to AIDD and AI drug discovery roles in New York or hybrid. I am glad to discuss model evaluation, protein and antibody design, or scientific operations.</p>
     <a class="contact-email" href="mailto:zhengyzh09@gmail.com">zhengyzh09@gmail.com</a>
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -203,8 +257,8 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© <span data-year>2026</span> Yuanzhang Zheng · New York</span>
-      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
     </div>
   </footer>
 

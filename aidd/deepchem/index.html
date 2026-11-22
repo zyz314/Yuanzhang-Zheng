@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeepChem — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="An open toolkit and benchmark suite for molecular machine learning.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/deepchem/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DeepChem — AIDD Model Testing">
+  <meta property="og:description" content="An open toolkit and benchmark suite for molecular machine learning.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/deepchem/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>DeepChem</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD toolkit brief · Toolkit / ML</p>
+      <h1 class="model-title">DeepChem</h1>
+      <p class="model-standfirst">An open toolkit and benchmark suite for molecular machine learning.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Difficulty</dt><dd>Beginner</dd></div>
+        <div><dt>Compute</dt><dd>CPU or GPU</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Toolkit, not a single model</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>DeepChem is not a single model. It is a Python toolkit with dataset loaders, featurizers, model wrappers, and tutorials for molecular machine learning.</p><p>It is useful for reproducing baselines and for teaching, but it is not a new generative architecture.</p>
+
+        <h2>The AI principle</h2>
+        <p>The toolkit wraps graph neural networks, classical models, and molecular featurizers. The AI content depends on the model you choose: a graph convolution, a random forest, or a pretrained transformer.</p><p>Its main contribution is infrastructure: standardized datasets (including MoleculeNet), splits, and evaluation loops. That makes it a good control when comparing a new model.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It lowers the barrier to running molecular ML baselines.</li><li>MoleculeNet loaders make cross-paper comparisons easier.</li><li>It supports many model families and tutorials.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>It is not a state-of-the-art model by itself.</li><li>Version drift and dependency issues can make old tutorials hard to reproduce.</li><li>It can encourage benchmark chasing rather than prospective validation.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Pin reproducible environments and dataset versions.</li><li>Add modern GNN and foundation-model baselines.</li><li>Emphasize scaffold splits, calibration, and prospective tests.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Reproduce three MoleculeNet tasks with DeepChem&#x27;s tutorial models and compare with Chemprop on the same splits. I will record package versions and any changes needed to run the tutorials.</p>
+          <ul class="model-test-metrics"><li>RMSE/ROC-AUC</li><li>reproducibility</li><li>runtime</li><li>dependency issues</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://deepchem.io/" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Software toolkit</span>
+        </a>
+        <a href="https://github.com/deepchem/deepchem" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

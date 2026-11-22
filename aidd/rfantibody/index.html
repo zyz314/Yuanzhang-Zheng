@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RFantibody — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="Structure-based de novo antibody and nanobody design with an antibody-finetuned RFdiffusion pipeline.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/rfantibody/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RFantibody — AIDD Model Testing">
+  <meta property="og:description" content="Structure-based de novo antibody and nanobody design with an antibody-finetuned RFdiffusion pipeline.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/rfantibody/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>RFantibody</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Antibody / de novo design</p>
+      <h1 class="model-title">RFantibody</h1>
+      <p class="model-standfirst">Structure-based de novo antibody and nanobody design with an antibody-finetuned RFdiffusion pipeline.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Difficulty</dt><dd>Advanced</dd></div>
+        <div><dt>Compute</dt><dd>NVIDIA GPU; substantial for 1,000+ designs</dd></div>
+        <div><dt>Status</dt><dd>Planned</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> MIT license; Linux, CUDA 11.8+, Docker/Apptainer supported. The README recommends pilot runs before large campaigns.</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>RFantibody is a three-stage pipeline: an antibody-finetuned RFdiffusion generates CDR loops and docks against an antigen, ProteinMPNN designs sequences, and an antibody-finetuned RF2 predicts the complex and supplies confidence scores.</p><p>It is built for de novo antibodies and nanobodies. It uses an HLT-format framework (heavy, light, target chains) and designs only the CDR loops specified by the user.</p>
+
+        <h2>The AI principle</h2>
+        <p>The first stage is a fine-tuned RFdiffusion model. It performs SE(3) diffusion over antibody frameworks and CDR loops, conditioned on the target structure and hotspot residues. The antibody-specific fine-tuning teaches the model natural CDR length and docking geometry.</p><p>The second stage is ProteinMPNN, which designs CDR sequences for the generated backbone. The third stage is an antibody-finetuned RF2 that predicts the antibody-antigen complex and provides pLDDT, pAE, and interface scores for filtering.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It is an open, end-to-end antibody design pipeline with a usable CLI, Quiver files, and Docker/Apptainer support.</li><li>It can design nanobodies and scFvs against a specified epitope.</li><li>It is built for scale: the README discusses campaigns in the thousands to tens of thousands of designs.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>The success rate is still low, and the authors note that the current RF2 filter is not reliable enough.</li><li>Typical campaigns may need ~10,000 designs to find hits; 2,000 is a pilot, not a guarantee.</li><li>It does not model developability, expression, immunogenicity, or affinity maturation.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Replace or augment the RF2 filter with AF3/Boltz-2 and a calibrated ensemble.</li><li>Add developability and expression predictors before wet-lab ordering.</li><li>Feed experimental positives and negatives back into the filter and the design distribution.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Planned campaign: 2,000 designs</p>
+          <p>Run a 2,000-design campaign against a chosen antigen. Generate antibody backbones with RFdiffusion, design CDR sequences with ProteinMPNN, and score complexes with RF2 plus Boltz-2. I will record the full funnel, CDR length distributions, hotspot contacts, and top candidates, then add wet-lab results when available.</p>
+          <ul class="model-test-metrics"><li>2,000 designs</li><li>RF2 pAE</li><li>pLDDT</li><li>hotspot contacts</li><li>novelty</li><li>developability</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Antigen, epitope hotspots, framework, CDR length ranges, GPU, and exact RFantibody commit.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>2,000 backbones, ProteinMPNN sequences, RF2/Boltz-2 scores, and the filtering funnel.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Top candidates, score distributions, failure modes, and experimental validation when available.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://www.biorxiv.org/content/10.1101/2024.03.14.585103v1" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>bioRxiv preprint</span>
+        </a>
+        <a href="https://github.com/RosettaCommons/RFantibody" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

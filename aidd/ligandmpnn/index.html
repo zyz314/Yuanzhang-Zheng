@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LigandMPNN — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="Ligand-aware inverse folding for binding sites, cofactors, and non-protein atoms.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/ligandmpnn/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LigandMPNN — AIDD Model Testing">
+  <meta property="og:description" content="Ligand-aware inverse folding for binding sites, cofactors, and non-protein atoms.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/ligandmpnn/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>LigandMPNN</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Protein / sequence design</p>
+      <h1 class="model-title">LigandMPNN</h1>
+      <p class="model-standfirst">Ligand-aware inverse folding for binding sites, cofactors, and non-protein atoms.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Difficulty</dt><dd>Intermediate</dd></div>
+        <div><dt>Compute</dt><dd>GPU recommended</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> See repository for publication link</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>LigandMPNN extends ProteinMPNN to sequence design in the presence of ligands, metals, and other non-protein atoms. It is built for enzyme and binding-site design.</p><p>It keeps the backbone fixed and redesigns residues around the ligand, rather than generating a new backbone.</p>
+
+        <h2>The AI principle</h2>
+        <p>The model adds ligand atom context to the message-passing graph. Residues can condition on the identity and geometry of nearby non-protein atoms, which is essential for cofactor binding and catalysis.</p><p>The training objective is still sequence recovery, but the conditional distribution now includes the ligand environment. This makes the model sensitive to pocket shape and chemical complementarity.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It can design sequences around ligands and metals, a major gap in ProteinMPNN.</li><li>It is useful for enzyme active-site optimization and cofactor binding.</li><li>It fits into the same codebase and workflow as ProteinMPNN.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>The backbone and ligand pose are fixed; wrong poses produce wrong sequences.</li><li>It does not explicitly score binding affinity or catalytic activity.</li><li>Ligand chemistry and protonation states are simplified.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Condition on an ensemble of ligand poses and protein conformations.</li><li>Add explicit hydrogen-bond and metal-coordination terms.</li><li>Train on experimental activity data, not only sequence recovery.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Redesign the binding site of a metalloenzyme or ligand-bound structure. Measure sequence recovery, ligand-contact preservation, and AF2/Boltz confidence for the redesigned complex.</p>
+          <ul class="model-test-metrics"><li>contact recovery</li><li>sequence recovery</li><li>complex confidence</li><li>metal coordination</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://github.com/dauparas/LigandMPNN" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Nature Methods</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DynamicBind — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="Diffusion-based docking with protein flexibility and induced fit.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/dynamicbind/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DynamicBind — AIDD Model Testing">
+  <meta property="og:description" content="Diffusion-based docking with protein flexibility and induced fit.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/dynamicbind/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>DynamicBind</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Docking / induced fit</p>
+      <h1 class="model-title">DynamicBind</h1>
+      <p class="model-standfirst">Diffusion-based docking with protein flexibility and induced fit.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2023</dd></div>
+        <div><dt>Difficulty</dt><dd>Advanced</dd></div>
+        <div><dt>Compute</dt><dd>GPU recommended</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Paper and setup in repository</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>DynamicBind predicts a protein-ligand complex while allowing the protein structure to adjust. It is aimed at induced fit, where a rigid-receptor docking model would miss the relevant pocket.</p><p>It outputs a complex structure and confidence scores. It is not a molecular-dynamics simulation and does not provide kinetics.</p>
+
+        <h2>The AI principle</h2>
+        <p>DynamicBind uses an equivariant diffusion model over the protein-ligand complex. The protein and ligand are denoised together, so the model can generate a holo-like pocket rather than keeping the apo structure fixed.</p><p>The model conditions on the protein sequence/structure and the ligand, learning a joint distribution of conformations. This is a harder problem than rigid docking and requires more compute.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It explicitly addresses protein flexibility, a major failure mode of rigid docking.</li><li>It can generate a pocket that is not open in the input structure.</li><li>It is a useful comparison against DiffDock and Vina on flexible targets.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>It is expensive and can generate unrealistic protein distortions.</li><li>Validation is mostly retrospective; prospective hit rates are less clear.</li><li>It does not model explicit water, ions, or long-timescale conformational changes.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Constrain protein flexibility with physical potentials or normal-mode priors.</li><li>Validate prospectively on cryptic-pocket targets.</li><li>Add affinity and residence-time prediction.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Run five flexible or cryptic-pocket targets. Compare pocket recovery, ligand RMSD, and physical validity with DiffDock and Vina. Record GPU memory and runtime.</p>
+          <ul class="model-test-metrics"><li>pocket recovery</li><li>ligand RMSD</li><li>physical validity</li><li>runtime</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://github.com/luwei0917/DynamicBind" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Nature Communications</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

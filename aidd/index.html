@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="A model-by-model technical brief and open test log for 27 open-source AI drug discovery models, from RFdiffusion and RFantibody to Boltz-2, GenMol, and AlphaFold3.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AIDD Model Testing — Yuanzhang Zheng">
+  <meta property="og:description" content="27 open-source models for AI drug discovery, explained and tested one by one.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../research/">Research</a>
+      <a href="../aidd/" aria-current="page">AIDD</a>
+      <a href="../publications.html">Publications</a>
+      <a href="../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../research/">Research</a>
+        <a href="../aidd/">AIDD</a>
+        <a href="../publications.html">Publications</a>
+        <a href="../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="page-hero aidd-hero">
+      <h1 class="page-title">AIDD Model Testing</h1>
+      <p class="page-standfirst">
+        Structural biology taught me what a model has to get right. AIDD is where I build and test it. This is a public, model-by-model record of the open-source systems that matter for AI drug discovery: what they learn, where they break, and what I would change.
+      </p>
+      <p class="research-meta-line">27 briefs · 9 groups · test logs open</p>
+      <div class="aidd-legend">
+        <span><strong>Brief ready</strong> — model page and test plan are written; no run yet.</span>
+        <span><strong>Planned</strong> — a specific experiment is queued.</span>
+        <span><strong>Running / complete</strong> — added after each run.</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>From structure to AIDD</h2>
+      </div>
+      <p class="section-intro">
+        I spent more than a decade determining protein structures and designing inhibitors. That work taught me what a model has to get right: chemistry, geometry, and the experiment that can falsify it. I now hold an M.S. in Computer Science (AI) from Georgia Tech, and I am building an AIDD practice around reproducible model evaluation, protein and antibody design, and wet-lab-aware filters.
+      </p>
+      <p class="section-intro" style="margin-top: 14px;">
+        This catalog is the evidence trail. The goal is not to run the most models. It is to know which ones are worth trusting, where they fail, and how to make them better.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>First planned campaign</h2>
+        <a class="text-link" href="rfantibody/">Open the RFantibody brief</a>
+      </div>
+      <div class="aidd-feature">
+        <div>
+          <p class="feature-kicker">Antibody design · 2,000 designs</p>
+          <h2>RFantibody, then an honest filter.</h2>
+          <p>
+            The first campaign is a 2,000-design antibody run: antigen and epitope hotspots in, CDR loops and sequences out, then RF2 and Boltz-2 scoring before anything reaches the bench. The point is not the number of designs. The point is the funnel and the failures.
+          </p>
+        </div>
+        <div class="aidd-feature-plan">
+          <h3>What I will record</h3>
+          <ol>
+            <li>Exact commit, framework, CDR length ranges, and hotspot selection.</li>
+            <li>Backbone, sequence, and complex-score distributions across all 2,000 designs.</li>
+            <li>Top candidates, developability flags, and experimental results when available.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>The catalog</h2>
+      </div>
+      <div class="aidd-groups">
+
+      <section class="aidd-group">
+        <h2>Protein backbone and all-atom design</h2>
+
+        <a class="aidd-row" href="rfdiffusion3/">
+          <span class="aidd-row-year">2025</span>
+          <span><span class="aidd-row-name">RFdiffusion3</span><span class="aidd-row-desc">All-atom protein design around ligands, nucleic acids and functional sites</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="rfdiffusion2/">
+          <span class="aidd-row-year">2025</span>
+          <span><span class="aidd-row-name">RFdiffusion2</span><span class="aidd-row-desc">Atomic-level enzyme active-site scaffolding</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="genie3/">
+          <span class="aidd-row-year">2026</span>
+          <span><span class="aidd-row-name">Genie3</span><span class="aidd-row-desc">Protein backbone generation and conditional design</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="rfdiffusion/">
+          <span class="aidd-row-year">2023</span>
+          <span><span class="aidd-row-name">RFdiffusion</span><span class="aidd-row-desc">De novo protein backbone, binder and motif-scaffold generation</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="chroma/">
+          <span class="aidd-row-year">2023</span>
+          <span><span class="aidd-row-name">Chroma</span><span class="aidd-row-desc">Programmable conditional protein generation</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="genie2/">
+          <span class="aidd-row-year">2025</span>
+          <span><span class="aidd-row-name">Genie2</span><span class="aidd-row-desc">Conditional protein backbone generation and motif scaffolding</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="framediff/">
+          <span class="aidd-row-year">2023</span>
+          <span><span class="aidd-row-name">FrameDiff</span><span class="aidd-row-desc">SE(3) diffusion for protein backbone generation</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>Antibody design</h2>
+
+        <a class="aidd-row" href="rfantibody/">
+          <span class="aidd-row-year">2024</span>
+          <span><span class="aidd-row-name">RFantibody</span><span class="aidd-row-desc">Structure-based de novo antibody and nanobody design</span></span>
+          <span class="aidd-row-status">Planned</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>Inverse folding and sequence design</h2>
+
+        <a class="aidd-row" href="proteinmpnn/">
+          <span class="aidd-row-year">2022</span>
+          <span><span class="aidd-row-name">ProteinMPNN</span><span class="aidd-row-desc">Inverse folding: sequence design for a fixed backbone</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="ligandmpnn/">
+          <span class="aidd-row-year">2024</span>
+          <span><span class="aidd-row-name">LigandMPNN</span><span class="aidd-row-desc">Sequence design conditioned on ligands and nonprotein atoms</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>Structure prediction</h2>
+
+        <a class="aidd-row" href="boltz-2/">
+          <span class="aidd-row-year">2025</span>
+          <span><span class="aidd-row-name">Boltz-2</span><span class="aidd-row-desc">Biomolecular complex structure and binding-affinity prediction</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="boltz-1/">
+          <span class="aidd-row-year">2024</span>
+          <span><span class="aidd-row-name">Boltz-1</span><span class="aidd-row-desc">Protein and biomolecular complex structure prediction</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="chai-1/">
+          <span class="aidd-row-year">2024</span>
+          <span><span class="aidd-row-name">Chai-1</span><span class="aidd-row-desc">Multimolecular structure prediction</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="alphafold3/">
+          <span class="aidd-row-year">2024</span>
+          <span><span class="aidd-row-name">AlphaFold3</span><span class="aidd-row-desc">Biomolecular complex prediction including protein-ligand</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>Docking and induced fit</h2>
+
+        <a class="aidd-row" href="diffdock/">
+          <span class="aidd-row-year">2022</span>
+          <span><span class="aidd-row-name">DiffDock</span><span class="aidd-row-desc">Diffusion-based ligand pose prediction</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="dynamicbind/">
+          <span class="aidd-row-year">2023</span>
+          <span><span class="aidd-row-name">DynamicBind</span><span class="aidd-row-desc">Predict protein-ligand binding with protein flexibility</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="equibind/">
+          <span class="aidd-row-year">2022</span>
+          <span><span class="aidd-row-name">EquiBind</span><span class="aidd-row-desc">Geometric deep-learning fast ligand docking</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>Small-molecule generation</h2>
+
+        <a class="aidd-row" href="lamgen/">
+          <span class="aidd-row-year">2026</span>
+          <span><span class="aidd-row-name">LaMGen</span><span class="aidd-row-desc">Multi-target 3D molecular generation</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="diffpharma/">
+          <span class="aidd-row-year">2026</span>
+          <span><span class="aidd-row-name">DiffPharma</span><span class="aidd-row-desc">Interaction-constrained 3D molecular generation</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="genmol/">
+          <span class="aidd-row-year">2025</span>
+          <span><span class="aidd-row-name">GenMol</span><span class="aidd-row-desc">Discrete diffusion for de novo, fragment-constrained generation and optimization</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="genmol-v2/">
+          <span class="aidd-row-year">2025</span>
+          <span><span class="aidd-row-name">GenMol V2</span><span class="aidd-row-desc">Updated GenMol with extended SAFE syntax</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>3D representation and ADMET</h2>
+
+        <a class="aidd-row" href="uni-mol/">
+          <span class="aidd-row-year">2023</span>
+          <span><span class="aidd-row-name">Uni-Mol</span><span class="aidd-row-desc">3D molecular pretraining for property prediction and downstream tasks</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="chemprop/">
+          <span class="aidd-row-year">2023</span>
+          <span><span class="aidd-row-name">Chemprop</span><span class="aidd-row-desc">Molecular property prediction via message-passing networks</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>Protein language models</h2>
+
+        <a class="aidd-row" href="esm-3/">
+          <span class="aidd-row-year">2024</span>
+          <span><span class="aidd-row-name">ESM-3</span><span class="aidd-row-desc">Generative protein sequence / structure / function modeling</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="esm-2/">
+          <span class="aidd-row-year">2023</span>
+          <span><span class="aidd-row-name">ESM-2</span><span class="aidd-row-desc">Protein sequence embeddings and representation learning</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      <section class="aidd-group">
+        <h2>Benchmarks and toolkits</h2>
+
+        <a class="aidd-row" href="molgenbench/">
+          <span class="aidd-row-year">2026</span>
+          <span><span class="aidd-row-name">MolGenBench</span><span class="aidd-row-desc">Benchmark for de novo generation and lead optimization</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+        <a class="aidd-row" href="deepchem/">
+          <span class="aidd-row-year">2024</span>
+          <span><span class="aidd-row-name">DeepChem</span><span class="aidd-row-desc">Drug discovery ML toolkit and benchmark models</span></span>
+          <span class="aidd-row-status">Brief ready</span>
+        </a>
+      </section>
+      </div>
+      <p class="aidd-note">The catalog is curated from the November 2026 AIDD open-source model list. Model details come from the linked paper or repository; each page states its own access caveats. Inclusion is not an endorsement, and a benchmark score is not a claim of experimental success.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>How to read a page</h2>
+      </div>
+      <p class="section-intro">
+        Every brief follows the same order: <strong>what it does</strong>, <strong>the AI principle</strong>, <strong>what it is good at</strong>, <strong>where it breaks</strong>, <strong>how I would improve it</strong>, and <strong>my test</strong>. The test section is deliberately empty until I run the model. When I add results, they will include commands, runtime, figures, and failures, not only the best numbers.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>

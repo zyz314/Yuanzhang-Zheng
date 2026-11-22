@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RFdiffusion3 — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="All-atom protein design around ligands, nucleic acids, metals, and functional sites.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/rfdiffusion3/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RFdiffusion3 — AIDD Model Testing">
+  <meta property="og:description" content="All-atom protein design around ligands, nucleic acids, metals, and functional sites.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/rfdiffusion3/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>RFdiffusion3</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Protein / all-atom design</p>
+      <h1 class="model-title">RFdiffusion3</h1>
+      <p class="model-standfirst">All-atom protein design around ligands, nucleic acids, metals, and functional sites.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2025</dd></div>
+        <div><dt>Difficulty</dt><dd>Advanced</dd></div>
+        <div><dt>Compute</dt><dd>GPU; substantial</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Check foundry model-specific setup and weights</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>RFdiffusion3 is the all-atom branch of the RFdiffusion family. It is built for design problems where the protein does not exist in isolation: an enzyme around a cofactor, a binder around a small molecule, or a protein that must pack against nucleic acid or a metal site.</p><p>It proposes protein structures under atom-level constraints, then leaves sequence design and validation to the rest of the pipeline. It is a design model, not a structure predictor or an experimental oracle.</p>
+
+        <h2>The AI principle</h2>
+        <p>The model is a denoising diffusion model over protein geometry. Training adds noise to protein structures; a RoseTTAFold-derived network learns to predict that noise and remove it. At sampling time, the model starts from noise and gradually resolves a structure that satisfies the supplied condition.</p><p>The important change in RFdiffusion3 is the all-atom representation. Instead of reasoning only over backbone frames, the model represents each residue with a tryptophan-sized atom cloud (4 backbone atoms and 10 side-chain atoms), collapsing unused atoms onto the beta carbon. This lets the denoiser see side-chain geometry and non-protein atoms, not just the C-alpha trace.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It can condition on ligands, nucleic acids, metals, and catalytic side chains, which backbone-only models cannot represent directly.</li><li>The all-atom representation is a better match for enzyme active sites and cofactor-binding pockets.</li><li>It fits inside the Foundry/RosettaCommons ecosystem, so it can be paired with ProteinMPNN, RF2, and standard design filters.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>All-atom generation is expensive and gets harder as the number of ligand atoms and protein residues grows.</li><li>A generated structure can be geometrically plausible but chemically wrong: strained bonds, incorrect protonation, or impossible metal coordination.</li><li>The model does not by itself prove expression, folding, binding, or activity. Those require sequence design and wet-lab tests.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Add explicit chemistry and coordination terms to the denoiser or the sampler, rather than hoping the model learns them from structures.</li><li>Train and evaluate on matched ligand-bound complexes, with a held-out set organized by ligand scaffold rather than random split.</li><li>Pair generation with a physics-aware filter (PoseBusters, Rosetta, or short MD) and report failures, not just top designs.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Run the official RFdiffusion3 example on a small ligand-bound target. Generate 100 designs, run ProteinMPNN for sequences, then score with Boltz-2 or AlphaFold3. I will record runtime, GPU memory, ligand-contact recovery, and obvious clashes.</p>
+          <ul class="model-test-metrics"><li>runtime</li><li>GPU memory</li><li>ligand-contact recovery</li><li>designability</li><li>clash rate</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://doi.org/10.1101/2025.09.18.676967" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Preprint</span>
+        </a>
+        <a href="https://github.com/RosettaCommons/foundry" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

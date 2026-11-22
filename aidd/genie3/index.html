@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genie3 — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="SE(3)-equivariant all-atom diffusion for fast protein backbone and binder design.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/genie3/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Genie3 — AIDD Model Testing">
+  <meta property="og:description" content="SE(3)-equivariant all-atom diffusion for fast protein backbone and binder design.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/genie3/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>Genie3</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Protein / backbone design</p>
+      <h1 class="model-title">Genie3</h1>
+      <p class="model-standfirst">SE(3)-equivariant all-atom diffusion for fast protein backbone and binder design.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Difficulty</dt><dd>Advanced</dd></div>
+        <div><dt>Compute</dt><dd>GPU</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Paper link in repository; year needs verification</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>Genie3 generates protein structures. It can make unconditional monomers, scaffold one or more functional motifs, and design binders against a target interface.</p><p>It is a structure generator, not a full design pipeline. The paper pairs it with ProteinMPNN for sequences and AlphaFold-based filters for in-silico evaluation.</p>
+
+        <h2>The AI principle</h2>
+        <p>Genie3 represents proteins as branched polymers. In the forward process it adds noise to atom point clouds; in the reverse process it reasons over Frenet-Serret frames along the backbone and along each side chain. This keeps the model SE(3)-equivariant while still giving it all-atom detail.</p><p>The denoiser uses an SE(3)-invariant input embedder, a latent transformer with bidirectional single/pair updates, and an equivariant structural decoder with invariant point attention. For motifs, known side-chain atoms are atomized; the scaffold is generated at backbone level. Training includes multimers, which is what enables binder design.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It keeps exact rotational and translational equivariance, unlike many recent all-atom models that rely on augmentation.</li><li>It is fast: the paper reports a 10x reduction in sampling steps with little quality loss.</li><li>It handles motif scaffolding and binder design in one architecture, with strong in-silico results.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>The experimental validation is still limited; most evaluation is in-silico self-consistency.</li><li>It is a protein-only model. Ligands and nucleic acids are outside its native representation.</li><li>The binder-design filter can still select designs that bind the wrong epitope or fail in the lab.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Extend the branched-polymer representation to ligands, nucleic acids, and metals.</li><li>Calibrate the in-silico filter against experimental positives and negatives, not only AF2/AF3 confidence.</li><li>Report design diversity and failure modes alongside success rates.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Run a motif-scaffolding task and a small binder-design task. Generate 200 structures, design sequences with ProteinMPNN, and evaluate with AF2/Boltz-2. I will compare runtime against RFdiffusion and measure designability and diversity.</p>
+          <ul class="model-test-metrics"><li>runtime per design</li><li>designability</li><li>motif RMSD</li><li>binder ipTM</li><li>diversity</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://github.com/aqlaboratory/genie3" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Research release</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

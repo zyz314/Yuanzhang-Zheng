@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uni-Mol — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="A 3D molecular pretraining framework for property prediction and downstream design.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/uni-mol/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Uni-Mol — AIDD Model Testing">
+  <meta property="og:description" content="A 3D molecular pretraining framework for property prediction and downstream design.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/uni-mol/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>Uni-Mol</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Molecular representation</p>
+      <h1 class="model-title">Uni-Mol</h1>
+      <p class="model-standfirst">A 3D molecular pretraining framework for property prediction and downstream design.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2023</dd></div>
+        <div><dt>Difficulty</dt><dd>Intermediate</dd></div>
+        <div><dt>Compute</dt><dd>GPU recommended</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> General-purpose molecular representation baseline</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>Uni-Mol learns representations from 3D molecular conformations. It is a pretrained backbone for property prediction, conformer generation, and other downstream tasks.</p><p>It is not a generative model for new molecules by itself. It provides embeddings and task heads.</p>
+
+        <h2>The AI principle</h2>
+        <p>Uni-Mol uses an SE(3)-equivariant transformer over atoms and coordinates. Pretraining masks atoms and predicts their coordinates/properties, forcing the model to learn local geometry and chemical context.</p><p>The pretrained representation can be fine-tuned on ADMET, solubility, or other molecular properties. The key idea is that 3D geometry carries information that 2D fingerprints miss.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It captures 3D conformation, which is important for binding and property prediction.</li><li>The pretrained backbone can be fine-tuned with relatively little labeled data.</li><li>It is a strong baseline for 3D-aware ADMET and property tasks.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>It depends on the quality of the input conformer.</li><li>Pretraining data and task labels can introduce bias.</li><li>It is not a pocket-aware model unless conditioned on protein structure.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Condition on protein pockets for target-aware property prediction.</li><li>Use conformational ensembles rather than a single conformer.</li><li>Calibrate uncertainty and test on scaffold splits.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Fine-tune Uni-Mol on a MoleculeNet or TDC endpoint and compare with Chemprop. I will use scaffold splits and report both accuracy and calibration.</p>
+          <ul class="model-test-metrics"><li>RMSE/ROC-AUC</li><li>calibration</li><li>scaffold generalization</li><li>runtime</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://arxiv.org/abs/2303.05743" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>ICLR 2023</span>
+        </a>
+        <a href="https://github.com/deepmodeling/Uni-Mol" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

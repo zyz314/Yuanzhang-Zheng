@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESM-3 — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="A generative protein language model that reasons over sequence, structure, and function.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/esm-3/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ESM-3 — AIDD Model Testing">
+  <meta property="og:description" content="A generative protein language model that reasons over sequence, structure, and function.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/esm-3/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>ESM-3</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Protein language model</p>
+      <h1 class="model-title">ESM-3</h1>
+      <p class="model-standfirst">A generative protein language model that reasons over sequence, structure, and function.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Difficulty</dt><dd>Advanced</dd></div>
+        <div><dt>Compute</dt><dd>GPU</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Check open model tier, weights and license</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>ESM3 is a generative model of proteins. It can generate sequences, fill in masked regions, and condition on structure or function tokens.</p><p>It is not a wet-lab oracle. Generated proteins still need folding, expression, and functional validation.</p>
+
+        <h2>The AI principle</h2>
+        <p>ESM3 uses a masked generative objective over discrete protein tokens: amino acids, structure tokens, and function keywords. The largest released model has 98B parameters.</p><p>The model learns a joint representation of sequence, structure, and function. Conditioning on structure or function lets it generate sequences that are consistent with those constraints, rather than only predicting a masked residue.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>It unifies sequence, structure, and function in one generative model.</li><li>It can be prompted with partial structure or function descriptions.</li><li>It is a strong foundation model for protein representation learning.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>Open weights are limited and the largest model is not freely available for all uses.</li><li>Generated proteins can be unstable or non-functional.</li><li>The model can reproduce training-set biases and does not guarantee novelty.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Pair generation with folding and expression filters.</li><li>Add antibody- and enzyme-specific conditioning.</li><li>Report novelty and failure rates, not only perplexity.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Generate 100 proteins under several prompts, fold them with ESMFold, and measure diversity, novelty, and predicted structural confidence. I will compare unconditional and function-conditioned generation.</p>
+          <ul class="model-test-metrics"><li>validity</li><li>diversity</li><li>novelty</li><li>ESMFold pLDDT</li><li>prompt adherence</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://github.com/evolutionaryscale/esm" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Science 2025</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

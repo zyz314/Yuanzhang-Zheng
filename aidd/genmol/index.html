@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GenMol — AIDD Model Testing — Yuanzhang Zheng</title>
+  <meta name="description" content="A single discrete-diffusion model for de novo generation, fragment-constrained design, and lead optimization.">
+  <meta name="author" content="Yuanzhang Zheng">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://zyz314.github.io/Yuanzhang-Zheng/aidd/genmol/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GenMol — AIDD Model Testing">
+  <meta property="og:description" content="A single discrete-diffusion model for de novo generation, fragment-constrained design, and lead optimization.">
+  <meta property="og:url" content="https://zyz314.github.io/Yuanzhang-Zheng/aidd/genmol/">
+  <meta property="og:image" content="https://zyz314.github.io/Yuanzhang-Zheng/assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/source-serif-4-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/aidd.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../../" aria-label="Yuanzhang Zheng, home"><span class="brand-name">Yuanzhang Zheng, PhD</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../research/">Research</a>
+      <a href="../../aidd/" aria-current="page">AIDD</a>
+      <a href="../../publications.html">Publications</a>
+      <a href="../../cv.html">CV</a>
+    </nav>
+    <a class="header-email" href="mailto:zhengyzh09@gmail.com">Email</a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>Menu</summary>
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="../../research/">Research</a>
+        <a href="../../aidd/">AIDD</a>
+        <a href="../../publications.html">Publications</a>
+        <a href="../../cv.html">CV</a>
+        <a href="mailto:zhengyzh09@gmail.com">Email</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="main">
+    <section class="model-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a><span>/</span><a href="../">AIDD</a><span>/</span><span>GenMol</span>
+      </nav>
+      <p class="eyebrow" style="margin-top: 22px;">AIDD model brief · Small molecule / generation</p>
+      <h1 class="model-title">GenMol</h1>
+      <p class="model-standfirst">A single discrete-diffusion model for de novo generation, fragment-constrained design, and lead optimization.</p>
+      <dl class="model-meta">
+        <div><dt>Year</dt><dd>2025</dd></div>
+        <div><dt>Difficulty</dt><dd>Intermediate</dd></div>
+        <div><dt>Compute</dt><dd>GPU recommended</dd></div>
+        <div><dt>Status</dt><dd>Brief ready</dd></div>
+      </dl>
+      <p class="model-access"><strong>Access note.</strong> Repository also describes GenMol V2</p>
+    </section>
+
+    <div class="model-layout">
+      <article class="model-body">
+        <h2>What it does</h2>
+        <p>GenMol generates molecules as SAFE (Sequential Attachment-based Fragment Embedding) sequences. It is a generalist: the same model handles de novo design, fragment-constrained generation, goal-directed hit generation, and lead optimization.</p><p>It is a 2D molecular generator. It does not see the protein pocket unless a separate docking or scoring step is added.</p>
+
+        <h2>The AI principle</h2>
+        <p>GenMol uses masked discrete diffusion over SAFE tokens. Instead of generating left-to-right like a GPT, it denoises many tokens in parallel, so the molecule is not tied to a single token order.</p><p>Fragments are the basic building blocks. Fragment remasking lets the model regenerate selected fragments during optimization, and molecular context guidance (MCG) steers the denoising toward a desired property or context.</p>
+
+        <h2>What it is good at</h2>
+        <ul class="model-bullets"><li>One model covers several drug-discovery tasks, reducing pipeline fragmentation.</li><li>Parallel decoding is efficient and avoids some of the exposure bias of autoregressive generation.</li><li>Fragment-level editing is a natural fit for lead optimization.</li></ul>
+
+        <h2>Where it breaks</h2>
+        <ul class="model-bullets"><li>It is not structure-conditioned by default; pocket-aware design needs an external docking loop.</li><li>Validity and novelty are not the same as synthesizability or biological activity.</li><li>Property guidance can collapse diversity if the reward is too narrow.</li></ul>
+
+        <h2>How I would improve it</h2>
+        <ul class="model-bullets"><li>Add 3D pocket conditioning or a learned docking surrogate to the denoising process.</li><li>Include synthesizability and ADMET constraints during generation.</li><li>Report diversity and failure modes alongside top scores.</li></ul>
+
+        <section class="test-log" id="test">
+          <p class="test-log-kicker">My test</p>
+          <h2>Reserved for the run.</h2>
+          <p class="test-status">Awaiting first run</p>
+          <p>Generate 1,000 molecules for a known target, then dock them and compute validity, uniqueness, novelty, QED, and SA score. I will compare fragment-constrained and unconstrained modes.</p>
+          <ul class="model-test-metrics"><li>validity</li><li>uniqueness</li><li>novelty</li><li>QED</li><li>SA score</li><li>docking enrichment</li></ul>
+          <div class="test-slots">
+          <div class="test-slot">
+            <h3>Setup</h3>
+            <p>Environment, model version, inputs, and the exact command will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Run</h3>
+            <p>Runtime, GPU memory, outputs, and intermediate failures will go here.</p>
+          </div>
+          <div class="test-slot">
+            <h3>Results</h3>
+            <p>Metrics, figures, and the interpretation will go here after the run.</p>
+          </div></div>
+          <p class="test-placeholder">This section is intentionally empty. I will add commands, runtime, figures, and failures after I run the model.</p>
+        </section>
+
+        <h2>Primary sources</h2>
+        <div class="source-list">
+        <a href="https://proceedings.mlr.press/v267/lee25o.html" target="_blank" rel="noopener noreferrer">
+          <span>Paper <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>ICML 2025</span>
+        </a>
+        <a href="https://github.com/NVIDIA-BioNeMo/genmol" target="_blank" rel="noopener noreferrer">
+          <span>Code <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>GitHub repository</span>
+        </a></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© <span data-year>2026</span> Yuanzhang Zheng, PhD · New York</span>
+      <span><a href="https://github.com/zyz314/Yuanzhang-Zheng">GitHub</a> · <a href="https://www.linkedin.com/in/yuanzhang-zheng-phd-113477ab">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>
